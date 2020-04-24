@@ -11,11 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 Route::get('/', 'Home\HomeController@index')->name('home.index');
 Route::get('/painel', 'Painel\PainelController@index')->name('painel.index');
+
+Route::get('/logout', function(){
+    Auth::logout();
+    return Redirect::to('/');
+ });
