@@ -20,3 +20,5 @@ Route::get('/logout', function(){
     Auth::logout();
     return Redirect::to('/');
  });
+
+ 
