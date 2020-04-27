@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -16,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Correção de tamanho das chaves
         Schema::defaultStringLength(191);
+
     }
 
     /**

@@ -1,4 +1,4 @@
-<!-- /.content-wrapper -->
+<!-- Define o rodapé da página -->
 <footer class="main-footer">
     <strong>Copyright &copy; {{date('Y')}} - <a href="http://sprnet.presidencia.gov.br">Unidade de Desenvolvimento de Soluções - DSeg</a>.</strong>
     Todos os direitos reservados.

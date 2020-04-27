@@ -1,9 +1,9 @@
 @extends('painel.layouts.index')
 
 @section('content')
-<!-- Main content -->
+<!-- Conteúdo principal -->
 <section class="content">
-    <div class="container-fluid">
+    <div class="container-fluid">  <!-- Apresenta os módulos/icones do sistema -->
         <!-- Small boxes (Stat box) -->
         <div class="row">
         <!-- ./col -->
