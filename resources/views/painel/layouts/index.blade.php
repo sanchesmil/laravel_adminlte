@@ -18,12 +18,26 @@
                     <div class="container-fluid"> 
                         <div class="row mb-6">
                             <div class="col-sm-6">
-                                <h1 class="m-0 text-dark">Painel de Controle</h1>
+                                <h1><a href="{{route('painel.index')}}" style="color: inherit;">Painel de Controle </a>   
+                                    <!-- Mostra o caminho da página atual no topo da página  -->
+                                    @if(isset($urlAtual))
+                                        <small class="breadcrumb-item active"> - {{$urlAtual}}</small>
+                                    @else
+                                        <small class="breadcrumb-item active"> - Página Principal</small>
+                                    @endif
+                                </h1>
                             </div>
                             <div class="col-sm-6"> <!-- Define o caminho da página -->
                                 <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item active">Página Principal</li>
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active"><a href="{{route('home.index')}}">Home</a></li>
+
+                                    <!-- Mostra o caminho da página atual no topo da página  -->
+                                    @if(isset($urlAtual))
+                                        <li class="breadcrumb-item"> {{$urlAtual}}</li>
+                                    @else
+                                        <li class="breadcrumb-item"> Página Principal</li>
+                                    @endif
+                               
                                 </ol>
                             </div>
                         </div>

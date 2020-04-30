@@ -11,14 +11,22 @@
             <!-- small box -->
             <div class="small-box bg-teal">
               <div class="inner">
-                <h3>0</h3>
 
-                <p>Usuários</p>
+                <!-- Injeta a model User na variável 'usuarios' -->
+                @inject('usuarios', 'App\User') 
+                  <h3>{{$usuarios->count()}}</h3>  <!-- Recupera a qtd usuários no banco -->
+               
+                  @if($usuarios->count() == 1)
+                    <p>Usuário</p>
+                  @else
+                    <p>Usuários</p>
+                  @endif
+
               </div>
               <div class="icon">
                 <i class="fa fa-users"></i>
               </div>
-              <a href="#" class="small-box-footer">Administrar <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{route('painel.usuarios.index')}}" class="small-box-footer">Administrar <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
         </div><!-- /.row (main row) -->

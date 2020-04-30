@@ -126,28 +126,18 @@
 
             <p>
               {{$user->name}} - Usuário
-              <small>Membro há {{$user->updated_at->diffForHumans()}}</small>
+              <small>Membro há {{$user->created_at->diffForHumans()}}</small>
             </p>
           </li>
-          <!-- Menu Body -->
-          <li class="user-body">
-            <div class="row">
-              <div class="col-4 text-center">
-                <a href="#">Followers</a>
-              </div>
-              <div class="col-4 text-center">
-                <a href="#">Sales</a>
-              </div>
-              <div class="col-4 text-center">
-                <a href="#">Friends</a>
-              </div>
-            </div>
-            <!-- /.row -->
-          </li>
+          
           <!-- Menu Footer-->
           <li class="user-footer">
-            <a href="#" class="btn btn-default btn-flat">Profile</a>
-            <a href="#" class="btn btn-default btn-flat float-right">Sign out</a>
+            <a href="#" class="btn btn-primary btn-flat">Perfil</a>
+            <a href="#" class="btn btn-danger btn-flat float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a>
+            <!-- Cria o form que faz o logout -->
+            <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none">
+              @csrf
+            </form>
           </li>
         </ul>
       </li>
