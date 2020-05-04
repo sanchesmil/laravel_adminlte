@@ -27,22 +27,7 @@ class PainelController extends Controller
     public function index()
     {
         $user = Auth()->User();
-        return view('painel.index', compact('user'));
+        return view('painel.principal.index', compact('user'));
     }
-
-    public function viewUsuarios(){
-
-        $user = Auth()->User();
-
-        //Controle de URL
-        $uri = $this->request->route()->uri();  // Recupera a URI
-        $exploder = explode('/', $uri);  // Recupera as partes da URI, separadas por /
-        $urlAtual = $exploder[1]; // Recupera o caminho atual para preencher o BradCrumb
-
-        $usuarios = $this->user->all();
- 
-        return view('painel.usuarios.index', compact('user', 'urlAtual', 'usuarios'));
-    }
-
    
 }

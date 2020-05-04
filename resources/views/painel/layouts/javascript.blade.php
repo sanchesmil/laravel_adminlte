@@ -8,6 +8,13 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+<!-- DataTables -->
+<script src="{{asset('AdminLTE/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('AdminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+
 <!-- ChartJS -->
 <script src="{{asset('AdminLTE/plugins/chart.js/Chart.min.js')}}"></script>
 <!-- Sparkline -->
@@ -32,3 +39,13 @@
 <script src="{{asset('AdminLTE/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('AdminLTE/dist/js/demo.js')}}"></script>
+
+<script>
+  $(function () {
+    $("#tab_users").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    
+  });
+</script>

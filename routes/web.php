@@ -1,21 +1,22 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+//Rotas de autenticação geradas pelo Laravel
 Auth::routes();
 
-Route::get('/', 'Home\HomeController@index')->name('home.index');
-Route::get('/painel', 'Painel\PainelController@index')->name('painel.index');
-Route::get('/painel/usuarios', 'Painel\PainelController@viewUsuarios')->name('painel.usuarios.index');
+//Rotas externas 
+Route::group(['namespace' => 'Home'], function(){
+    // Rota de acesso à HOME
+    Route::get('/', 'HomeController@index')->name('home.index');
+});
+
+//Rotas internas
+Route::group(['namespace' => 'Painel'], function(){
+    Route::get('/painel', 'PainelController@index')->name('painel.principal.index');
+    Route::get('/painel/usuarios', 'Usuarios\UsuariosController@index')->name('painel.usuarios.index');
+    Route::get('/painel/usuarios/create', 'Usuarios\UsuariosController@create')->name('painel.usuarios.create');
+    Route::post('/painel/usuarios/store', 'Usuarios\UsuariosController@store')->name('painel.usuarios.store');
+});
+
 
 Route::get('/logout', function(){
     Auth::logout();

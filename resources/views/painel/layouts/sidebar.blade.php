@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Logo e nome do Sistema -->
-    <a href="{{route('painel.index')}}" class="brand-link">
+    <a href="{{route('painel.principal.index')}}" class="brand-link">
       <img src="{{asset('AdminLTE/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">AdminLTE 3 Teste</span>
@@ -34,7 +34,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('painel.index')}}" class="nav-link active">
+                <a href="{{route('painel.principal.index')}}" class="nav-link active">
                   <i class="fa fa-home nav-icon"></i>
                   <p>Página principal</p>
                 </a>
