@@ -17,7 +17,7 @@
 
             <!-- Mostra o caminho da página atual no topo da página  -->
             @if(isset($urlAtual))
-                <li class="breadcrumb-item"> {{$urlAtual}}</li>
+                <li class="breadcrumb-item"> {{$urlAtual}}</li> 
             @else
                 <li class="breadcrumb-item"> Lista de usuários</li>
             @endif
