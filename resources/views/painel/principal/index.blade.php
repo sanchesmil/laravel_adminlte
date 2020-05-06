@@ -9,19 +9,12 @@
   <div class="container-fluid"> 
     <div class="row mb-6">
       <div class="col-sm-6">
-            <h1>Painel de Controle - <small>Sistema {{env('APP_NAME')}}</small> </h1>  
+            <h1>{{$title}} - <small>Sistema {{env('APP_NAME')}}</small> </h1>  
       </div>
       <div class="col-sm-6"> <!-- Define o caminho da página -->
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item active"><a href="{{route('home.index')}}">Home</a></li>
-
-          <!-- Mostra o caminho da página atual no topo da página  -->
-          @if(isset($urlAtual))
-              <li class="breadcrumb-item"> {{$urlAtual}}</li>
-          @else
-              <li class="breadcrumb-item"> Página Principal</li>
-          @endif
-        
+          <li class="breadcrumb-item"> {{$title}}</li>
         </ol>
       </div>
     </div>

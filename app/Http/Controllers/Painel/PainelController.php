@@ -27,7 +27,10 @@ class PainelController extends Controller
     public function index()
     {
         $user = Auth()->User();
-        return view('painel.principal.index', compact('user'));
+
+        $title = "Painel de Controle";
+        
+        return view('painel.principal.index', compact('user', 'title'));
     }
    
 }

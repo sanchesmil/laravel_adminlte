@@ -25,36 +25,55 @@ class UsuariosController extends Controller
 
         $user = Auth()->User();
 
-        //Controle de URL
-        $uri = $this->request->route()->uri();  // Recupera a URI
-        $exploder = explode('/', $uri);  // Recupera as partes da URI, separadas por /
-        $urlAtual = $exploder[1]; // Recupera o caminho atual para preencher o BradCrumb
+        $title = "Lista de Usuários";
+
+        //Caminho da URL atual
+        //$uri = $this->request->route()->uri();  // Recupera a URI
+        //$exploder = explode('/', $uri);  // Recupera as partes da URI, separadas por /
+        //$urlAtual = $exploder[1]; // Recupera o caminho atual para preencher o BreadCrumb
 
         $usuarios = $this->model->where('id','!=',0)->get();
 
-        return view('painel.usuarios.index', compact('user', 'urlAtual', 'usuarios'));
+        return view('painel.usuarios.index', compact('user','title','usuarios'));
     }
 
    
     public function create()
     {
-        $title = "Painel Cadastro de Usuários";
-
-         //Controle de URL
-         $uri = $this->request->route()->uri();  // Recupera a URI
-         $exploder = explode('/', $uri);  // Recupera as partes da URI, separadas por /
-         $urlAtual = $exploder[1]; // Recupera o caminho atual para preencher o BradCrumb
-
-         $usuarios = $this->model->where('id','!=',0)->get();
-
         $user = Auth()->User();
-        return view('painel.usuarios.create', compact('user', 'urlAtual','title','usuarios'));
+
+        $title = "Cadastro de Usuários";
+
+        //$usuarios = $this->model->where('id','!=',0)->get();
+        
+        // Simula uma lista de funções em JSON
+        $roles_json = 
+        '[ 
+            {"id":1, "name":"administrador"},
+            {"id":2, "name":"gerente"},
+            {"id":3, "name":"publicador"}
+        ]';
+
+        $roles = json_decode($roles_json); // Converte JSON -> Objeto 
+
+        //dd($roles);
+       
+        return view('painel.usuarios.create', compact('user', 'title', 'roles'));
     }
 
     
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+
+        $store = User::create($request->all());
+
+        $store = null;
+        
+        if($store)
+            return redirect()->route('painel.usuarios.index')->with('success', 'Usuário cadastrado com sucesso!');
+
+        return redirect()->back()->with('error','Erro ao cadastrar o usuário!');
     }
 
    

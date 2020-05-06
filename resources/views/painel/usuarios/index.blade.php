@@ -9,19 +9,12 @@
     <div class="container-fluid"> 
       <div class="row mb-6">
         <div class="col-sm-6">
-          <h1>Lista de Usuários - <small>Sistema {{env('APP_NAME')}}</small> </h1>
+          <h1>{{$title}} - <small>Sistema {{env('APP_NAME')}}</small> </h1>
         </div>
         <div class="col-sm-6"> <!-- Define o caminho da página -->
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item active"><a href="{{route('home.index')}}">Home</a></li>
-
-            <!-- Mostra o caminho da página atual no topo da página  -->
-            @if(isset($urlAtual))
-                <li class="breadcrumb-item"> {{$urlAtual}}</li>
-            @else
-                <li class="breadcrumb-item"> Lista de usuários</li>
-            @endif
-          
+            <li class="breadcrumb-item">{{$title}}</li>         
           </ol>
         </div>
       </div>
@@ -34,8 +27,14 @@
       <div class="col-12">  <!-- Cria a div que contém a tabela de usuários -->
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Adicionar | <a href="{{route('painel.usuarios.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i></a></h3>
+            <h3 class="card-title">Adicionar | <a href="{{route('painel.usuarios.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+                @if(session('success'))  <!-- Exibe erros se não criar novo usuario -->
+                  <span class="alert alert-success">| {{session('success')}}</span>
+                @endif
+            </h3>
           </div>
+
+
           <!-- /.card-header -->
           <div class="card-body">
             <table id="tab_users" class="table table-bordered table-striped">
@@ -43,8 +42,8 @@
                 <tr>
                   <th>ID</th>
                   <th>Nome</th>
-                  <th>Data Criação</th>
                   <th>E-mail</th>
+                  <th>Cadastro</th>
                   <th>Ações</th>
                 </tr>
               </thead>
@@ -53,8 +52,8 @@
                   <tr>
                     <td>{{$usuario->id}}</td>
                     <td>{{$usuario->name}}</td>
-                    <td>{{$usuario->created_at->diffForHumans()}}</td>
                     <td>{{$usuario->email}}</td>
+                    <td>{{$usuario->created_at->diffForHumans()}}</td>
                     <td>
                         <a href="" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                         <a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a>
@@ -66,8 +65,8 @@
                 <tr>
                   <th>ID</th>
                   <th>Nome</th>
-                  <th>Data Criação</th>
                   <th>E-mail</th>
+                  <th>Cadastro</th>
                   <th>Ações</th>
                 </tr>
               </tfoot>
